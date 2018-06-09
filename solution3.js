@@ -12,15 +12,13 @@ function convertColor(str) {
 
   function convertToHexa(str) {
     let deci = Number(str);
-    let hex = '';
-    let quotient = Math.floor(deci / 16);
-    let remainder = deci % 16;
     
-    if(deci < 16) {
-      return 
-    }
-
-    return `${quotient}${remainder}`;
+    let quotient = Math.floor(deci / 16);
+    quotient = Object.keys(hexTable).find(key => hexTable[key] === quotient )
+    let remainder = deci % 16;
+    remainder = Object.keys(hexTable).find(key => hexTable[key] === remainder);
+    
+    return `${quotient}${remainder}`
   }
 
 
