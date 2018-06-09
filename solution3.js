@@ -2,7 +2,7 @@
 
 function convertColor(str) {
 
-  function convertToDeci(hex) {  // takes a 2 hexadecimal digit number and coverts to 2 digit decimal
+  function convertToDeci(hex) {  // takes a 2 digit hexadecimal number and coverts to 2 digit decimal
     let deci = 0;
     for(let i = 0; i < hex.length; i++) {
       deci += Math.pow(16, hex.length - 1 - i) * hexTable[hex[i]];   //starts at index 0 and gives respective power of 16 to each char of input, using hexTable to fetch values 
