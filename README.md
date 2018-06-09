@@ -1,5 +1,5 @@
-* #### 3rd solution pusblish on NPM as a package. [Link](https://www.npmjs.com/package/myfirstnpmpkg-convertcolors)
-*
+ #### 3rd solution pusblished on NPM as a package. [Link](https://www.npmjs.com/package/myfirstnpmpkg-convertcolors)
+
 # Coding_Challenge-6
 
 This coding challenge is all about logic and problem solving. Since Coding Challenge #4 was such a success we are doing something similar again. You will get a chance to work on javascript logic problems and also see how others have solved similar problems. This way you can learn from each other! Please Use the **#coding-challenge** channel to discuss and share your work. At the end of the challenge, I will compile everyone's submitted answers onto github.(Ps, try to solve these yourself before going out on the internet and finding a copy paste solution)
