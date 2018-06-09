@@ -2,10 +2,10 @@
 
 function convertColor(str) {
 
-  function convertToDeci(hex) {
+  function convertToDeci(hex) {  // takes a 2 hexadecimal digit number and coverts to 2 digit decimal
     let deci = 0;
     for(let i = 0; i < hex.length; i++) {
-      deci += Math.pow(16, hex.length - 1 - i) * hexTable[hex[i]];
+      deci += Math.pow(16, hex.length - 1 - i) * hexTable[hex[i]];   //starts at index 0 and gives respective power of 16 to each char of input, using hexTable to fetch values 
     }
     return deci;
   }
@@ -13,9 +13,9 @@ function convertColor(str) {
   function convertToHexa(str) {
     let deci = Number(str);
 
-    let quotient = Math.floor(deci / 16);
-    quotient = Object.keys(hexTable).find(key => hexTable[key] === quotient )
-    let remainder = deci % 16;
+    let quotient = Math.floor(deci / 16);  //the first digit of hexa
+    quotient = Object.keys(hexTable).find(key => hexTable[key] === quotient )  //using hextable to find corresponding hexa number
+    let remainder = deci % 16;  // the second digit of hexa
     remainder = Object.keys(hexTable).find(key => hexTable[key] === remainder);
     
     return `${quotient}${remainder}`
@@ -41,6 +41,8 @@ function convertColor(str) {
     F: 15,
   }
 
+  // START HERE
+
   const hexRegex = /#(\w\w)(\w\w)(\w\w)/;
 
   const rgbRegex = /^rgb\((\w+), (\w+), (\w+)\)/;
@@ -48,16 +50,16 @@ function convertColor(str) {
   if(hexRegex.test(str)) {
     console.log('Input Color: ', str);
 
-    let temp = str.toUpperCase();
+    let temp = str.toUpperCase();  //convert input string to UPPERCASE to match hexTable
 
-    let [sym, color1, color2, color3] = temp.match(hexRegex);
+    let [sym, color1, color2, color3] = temp.match(hexRegex);  // sym = symbol = #
     
     return `rgb(${convertToDeci(color1)}, ${convertToDeci(color2)}, ${convertToDeci(color3)})`;
 
   } else if (rgbRegex.test(str)) {
     console.log('Input Color: ', str);
     
-    let [sym, color1, color2, color3] = str.match(rgbRegex);
+    let [sym, color1, color2, color3] = str.match(rgbRegex); //sym = symbol = rgb
 
     return `#${convertToHexa(color1)}${convertToHexa(color2)}${convertToHexa(color3)}`;
   } else {

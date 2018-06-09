@@ -5,20 +5,12 @@
 function advancedSort(arr) {
   console.log("Input array: ", arr);
 
-  arr.sort((a, b) => {
-    if(typeof a === 'string' && typeof b === 'number') {
-      return 1;
-    } else if (typeof b === 'string' && typeof a === 'number') {
-      return -1;
-    } else {
-      return a - b;
-    }
-  });
+  let numberArr = subArrSort(arr.sort((a, b) => a - b).filter(num => typeof num === 'number'));  //Sorts the input array in ascending order and filters out strings
 
-  let numberArr = subArrSort(arr.filter(num => typeof num === 'number'));
+  let stringArr = subArrSort(arr.sort((a, b) => a - b).filter(str => typeof str === 'string')); // sorts the input array in ascending order and filters out the numbers
 
-  let stringArr = subArrSort(arr.filter(str => typeof str === 'string'));
 
+  //  The code below returns an array if it consisits of numbers only, otherwise returns number array with string array pushed ot the last, else returns advancedSorted Array consisting of strings only
 
   if(stringArr.length) {
     numberArr.push(stringArr);
@@ -29,22 +21,25 @@ function advancedSort(arr) {
     return numberArr;
   }
 
+
+  
+
   function subArrSort(array) {
-    let temp = [];
-    let subArr = [];
+    let temp = [];  // the answer array
+    let subArr = []; // temporary array used to hold same numbers
 
     for(let i = 0; i < array.length; i++) {
-      if(array[i] === array[i + 1]) {
-        subArr.push(array[i]);
+      if(array[i] === array[i + 1]) { // checking if an element matches its forward neighbor
+        subArr.push(array[i]); //if it does, push it into subArr 
         continue;
       } else {
-        if(subArr.length) {
+        if(subArr.length) {  // if subArr.length exists, then the current element must have been matched by the last element. and it must be part of the sequence of same numbers
           subArr.push(arr[i]);
           temp.push(subArr);
-          subArr = [];
+          subArr = []; // reset subArr
           continue;
         }
-        temp.push(array[i]);
+        temp.push(array[i]); // if subArr.length is zero, it means the current element is a new number, and hence added directly to temp
       }
     }
     return temp;
