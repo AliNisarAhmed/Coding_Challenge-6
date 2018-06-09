@@ -41,16 +41,16 @@ function convertColor(str) {
     F: 15,
   }
 
-  const hexRegEx = /#(\w\w)(\w\w)(\w\w)/;
+  const hexRegex = /#(\w\w)(\w\w)(\w\w)/;
 
   const rgbRegex = /^rgb\((\w+), (\w+), (\w+)\)/;
 
-  if(hexRegEx.test(str)) {
+  if(hexRegex.test(str)) {
     console.log('Input Color: ', str);
 
     let temp = str.toUpperCase();
 
-    let [sym, color1, color2, color3] = temp.match(hexRegEx);
+    let [sym, color1, color2, color3] = temp.match(hexRegex);
     
     return `rgb(${convertToDeci(color1)}, ${convertToDeci(color2)}, ${convertToDeci(color3)})`;
 
@@ -71,7 +71,7 @@ console.log('\nQuestion 3: Convert Colors');
 
 console.log('Test Case # 1')
 
-console.log('Answer: ', convertColor("#994cf5"));  //return rgb(15, 35, 69)
+console.log('Answer: ', convertColor("#0f2345"));  //return rgb(15, 35, 69)
 
 console.log('Test Case # 2') 
 
