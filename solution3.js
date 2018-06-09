@@ -5,14 +5,14 @@ function convertColor(str) {
   function convertToDeci(hex) {
     let deci = 0;
     for(let i = 0; i < hex.length; i++) {
-      deci += Math.pow(16, hex.length - 1 - i) * Number(hexTable[hex[i]]);
+      deci += Math.pow(16, hex.length - 1 - i) * hexTable[hex[i]];
     }
     return deci;
   }
 
   function convertToHexa(str) {
     let deci = Number(str);
-    
+
     let quotient = Math.floor(deci / 16);
     quotient = Object.keys(hexTable).find(key => hexTable[key] === quotient )
     let remainder = deci % 16;
@@ -41,18 +41,21 @@ function convertColor(str) {
     F: 15,
   }
 
-  if(/^#/.test(str)) {
-    console.log('Input Hex: ', str);
-    let hexRegEx = /#(\w\w)(\w\w)(\w\w)/;
-    
-    let [sym, color1, color2, color3] = str.match(hexRegEx);
+  const hexRegEx = /#(\w\w)(\w\w)(\w\w)/;
+
+  const rgbRegex = /^rgb\((\w+), (\w+), (\w+)\)/;
+
+  if(hexRegEx.test(str)) {
+    console.log('Input Color: ', str);
+
+    let temp = str.toUpperCase();
+
+    let [sym, color1, color2, color3] = temp.match(hexRegEx);
     
     return `rgb(${convertToDeci(color1)}, ${convertToDeci(color2)}, ${convertToDeci(color3)})`;
 
-  } else if (/^rgb/) {
-    console.log('Input ', str);
-
-    let rgbRegex = /^rgb\((\w+), (\w+), (\w+)\)/;
+  } else if (rgbRegex.test(str)) {
+    console.log('Input Color: ', str);
     
     let [sym, color1, color2, color3] = str.match(rgbRegex);
 
@@ -62,8 +65,12 @@ function convertColor(str) {
 
 // TEST Cases
 
-console.log('Question 3: Test Cases');
+console.log('\nQuestion 3: Convert Colors');
 
-console.log(convertColor("#0F2345"));  //return rgb(15, 35, 69)
+console.log('Test Case # 1')
 
-console.log(convertColor("rgb(15, 35, 69)"));
+console.log('Answer: ', convertColor("#994cf5"));  //return rgb(15, 35, 69)
+
+console.log('Test Case # 2') 
+
+console.log('Answer: ', convertColor("rgb(15, 35, 69)"));
