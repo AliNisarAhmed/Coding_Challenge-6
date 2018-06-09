@@ -14,14 +14,11 @@ function advancedSort(arr) {
       return a - b;
     }
   });
-  // console.log(arr);
 
   let numberArr = subArrSort(arr.filter(num => typeof num === 'number'));
 
   let stringArr = subArrSort(arr.filter(str => typeof str === 'string'));
 
-  // console.log(numberArr.push(stringArr));
-  // console.log(stringArr);
 
   if(stringArr.length) {
     numberArr.push(stringArr);

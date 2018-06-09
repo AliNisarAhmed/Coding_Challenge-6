@@ -60,6 +60,8 @@ function convertColor(str) {
     let [sym, color1, color2, color3] = str.match(rgbRegex);
 
     return `#${convertToHexa(color1)}${convertToHexa(color2)}${convertToHexa(color3)}`;
+  } else {
+    console.error('Invalid color input');
   }
 }
 
